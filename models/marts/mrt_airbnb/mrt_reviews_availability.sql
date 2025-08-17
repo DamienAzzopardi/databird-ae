@@ -22,7 +22,7 @@ reviews as (
     select
         neighbourhood_cleansed,
         room_type,
-        sum(number_of_reviews) as total_reviews
+        sum(number_of_reviews) as nb_reviews
     from listings
 
     group by 1, 2

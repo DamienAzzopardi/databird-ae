@@ -19,6 +19,11 @@ models:
         description: "Prix par nuit en USD"
       - name: minimum_nights
         description: "Nombre de nuits minimum pour une réservation"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 365
+              strictly: false
       - name: number_of_reviews
         description: "Nombre total de commentaires"
       - name: availability_365

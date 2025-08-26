@@ -6,6 +6,6 @@ select
     cast(price as numeric) as price,
     cast(minimum_nights as integer) as minimum_nights,
     cast(number_of_reviews as integer) as number_of_reviews,
-    cast(availability_365 as integer) as availability_365
+    cast(availability_365 as integer) as availability_365 
 
 from {{ source('airbnb', 'listings') }}

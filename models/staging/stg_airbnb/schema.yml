@@ -25,6 +25,7 @@ models:
                 min_value: 1
                 max_value: 365
                 strictly: false
+              severity: warn
       - name: number_of_reviews
         description: "Nombre total de commentaires"
       - name: availability_365

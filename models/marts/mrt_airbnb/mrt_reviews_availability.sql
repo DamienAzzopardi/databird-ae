@@ -1,10 +1,3 @@
-{{ 
-	config(
-	    materialized='table',
-	    tag='hourly'
-    ) 
-}}
-
 with listings as (
 
     select

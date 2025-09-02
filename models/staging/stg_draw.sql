@@ -1,19 +1,12 @@
 with students as (
     
-    select 'alberto' as student_name union all 
-    select 'antoine' union all
-    select 'boutayna' union all 
-    select 'christine' union all 
-    select 'francois' union all 
-    select 'hugo' union all 
-    select 'huseyin' union all 
-    select 'julien' union all 
-    select 'matthieu' union all 
-    select 'merveille' union all
-    select 'paul' union all
-    select 'quentin' union all
-    select 'theo' union all
-    select 'tom' 
+    select 'isabelle' as student_name union all 
+    select 'alexis' union all
+    select 'lishan' union all 
+    select 'adrian' union all 
+    select 'lola' union all 
+    select 'yoann' union all 
+    select 'camille'
     
 )
 

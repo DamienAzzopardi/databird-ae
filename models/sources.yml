@@ -32,8 +32,8 @@ sources:
     tables:
       - name: songs
       - name: listening_data
-
-  - name: airbnb_test
-    schema: airbnb_test
-    tables:
-      - name: airbnb_test
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: null
+        loaded_at_field: CAST(listen_date AS TIMESTAMP)
+ 

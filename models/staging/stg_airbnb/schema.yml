@@ -30,3 +30,4 @@ models:
         description: "Nombre total de commentaires"
       - name: availability_365
         description: "Nombre de jours où le logement est disponible sur une année"
+        

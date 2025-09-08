@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_spotify__listening_data
+    description: "Staging model for Spotify listening data. Cleans and standardizes raw listening events, including listen date and minutes listened."
+    columns:
+      - name: song_id
+        description: "Unique identifier for the song. Used to join with song metadata."
+      - name: listen_date
+        description: "The calendar date when the listening event occurred."
+      - name: minutes_listened
+        description: "The total number of minutes listened for the given event. Defaults to 0 if missing in the source."
+
+  - name: stg_spotify__songs
+    description: "Staging model for Spotify song metadata. Standardizes casing and handles missing values for song attributes."
+    columns:
+      - name: song_id
+        description: "Unique identifier for the song. Primary key for the songs table."
+      - name: album
+        description: "Album name the song belongs to."
+      - name: release_year
+        description: "Year the song was released."
+      - name: title
+        description: "Title of the song, transformed to uppercase."
+      - name: artist
+        description: "Name of the artist, transformed to uppercase."
+      - name: genre
+        description: "Genre of the song. Defaults to 'Unknown' if not provided."

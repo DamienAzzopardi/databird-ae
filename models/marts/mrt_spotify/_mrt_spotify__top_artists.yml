@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: mart_spotify__top_artists
+    description: "Mart model returning the top 20 artists ranked by total minutes listened over the past two years."
+    columns:
+      - name: artist
+        description: "Name of the artist."
+      - name: total_minutes_listened
+        description: "Total number of minutes listened for the artist, aggregated across all songs in the past two years."

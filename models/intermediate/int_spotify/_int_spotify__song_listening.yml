@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_spotify__song_listening
+    description: "Intermediate model combining listening events with song metadata. Filters to the past two years of listening activity. Prepares data for downstream marts and analysis."
+    columns:
+      - name: song_id
+        description: "Unique identifier for the song, joined from listening data and song metadata."
+      - name: artist
+        description: "Name of the artist for the song."
+      - name: listen_date
+        description: "The calendar date when the listening event occurred, restricted to the past two years."
+      - name: minutes_listened
+        description: "Number of minutes listened for the given song on the given date."

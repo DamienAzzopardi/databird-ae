@@ -35,21 +35,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
+# Pushes documentation from the configuration yml files to the data warehouse
 models:
   +persist_docs:
       relation: true
       columns: true
 
   databird_ae:
-
+    # Applies to all files under models/staging
     staging:
       +schema: staging
       +materialized: view
-
+    
+    # Applies to all files under models/intermediate
     intermediate:
       +schema: intermediate
       +materialized: view
-
+    
+    # Applies to all files under models/marts
     marts:
       +schema: marts
       +materialized: table

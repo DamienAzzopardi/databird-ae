@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: mrt_core__dim_calendar
+    description: "Calendar date dimension (France) generated via dbt_utils.date_spine, enriched with ISO week/day, month/quarter/year attributes, week/month/quarter keys, period boundaries, ordinal positions, and French bank-holiday flags from the bank_holidays_france model."
+    columns:
+      - name: date_day
+        description: "The calendar date (YYYY-MM-DD)."
+        tests:
+          - not_null
+          - unique
+
+      # Components
+      - name: year_actual
+        description: "Gregorian calendar year for date_day."
+        tests:
+          - not_null
+      - name: quarter_actual
+        description: "Quarter of the year for date_day (1–4)."
+        tests:
+          - not_null
+      - name: month_actual
+        description: "Month of the year for date_day (1–12)."
+        tests:
+          - not_null
+      - name: week_actual
+        description: "Week number (BigQuery week-of-year; may differ from ISO week)."
+        tests:
+          - not_null
+      - name: day_actual
+        description: "Day of month (1–31)."
+        tests:
+          - not_null
+      - name: iso_week
+        description: "ISO week number (1–53)."
+        tests:
+          - not_null
+      - name: iso_day_of_week
+        description: "ISO day of week (1=Monday … 7=Sunday)."
+        tests:
+          - not_null
+
+      # Labels
+      - name: quarter_name
+        description: "Human-friendly quarter label (e.g., 'Quarter 1')."
+      - name: quarter_name_short
+        description: "Short quarter label (e.g., 'Q1')."
+      - name: month_name
+        description: "Full month name (locale: English)."
+      - name: month_name_short
+        description: "Abbreviated month name (3 chars, locale: English)."
+      - name: day_name
+        description: "Full weekday name (locale: English)."
+      - name: day_name_short
+        description: "Abbreviated weekday name (3 chars, locale: English)."
+
+      # Keys
+      - name: year_key
+        description: "Surrogate key for the year (YYYY)."
+      - name: quarter_key
+        description: "Surrogate key for year+quarter (YYYYQ)."
+      - name: month_key
+        description: "Surrogate key for year+month (YYYYMM)."
+      - name: week_key
+        description: "Surrogate key for year+ISO week (YYYYWW)."
+
+      # Year boundaries
+      - name: first_day_of_year
+        description: "First calendar day of the year for date_day."
+      - name: last_day_of_year
+        description: "Last calendar day of the year for date_day."
+
+      # Quarter boundaries
+      - name: first_day_of_quarter
+        description: "First calendar day of the quarter for date_day."
+      - name: last_day_of_quarter
+        description: "Last calendar day of the quarter for date_day."
+
+      # Month boundaries
+      - name: first_day_of_month
+        description: "First calendar day of the month for date_day."
+      - name: last_day_of_month
+        description: "Last calendar day of the month for date_day."
+      - name: number_of_days_in_month
+        description: "Number of days in the month of date_day."
+
+      # Week boundaries (ISO Monday start)
+      - name: first_day_of_week
+        description: "Monday of the ISO week containing date_day."
+      - name: last_day_of_week
+        description: "Sunday of the ISO week containing date_day."
+
+      # Position in time
+      - name: day_of_year
+        description: "Ordinal day within the year (1..365/366)."
+      - name: day_of_quarter
+        description: "Ordinal day within the quarter."
+      - name: ordinal_weekday_of_month
+        description: "Ordinal occurrence of the weekday within the month (e.g., 3rd Friday)."
+
+      # Weekend / working day
+      - name: is_weekend
+        description: "True if date_day is Saturday or Sunday (ISO definition)."
+      - name: is_working_day
+        description: "True if weekday and not a French bank holiday."
+
+      # Holidays FR
+      - name: is_holiday_fr
+        description: "True if date_day is a French bank holiday."
+      - name: holiday_fr_desc
+        description: "Description of the French bank holiday (if any)."

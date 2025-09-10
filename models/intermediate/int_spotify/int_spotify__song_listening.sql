@@ -11,7 +11,7 @@ song_listening as (
 
     left join {{ ref("stg_spotify__songs") }} as s on l.song_id = s.song_id
 
-    where l.listen_date >= date_sub(current_date(), interval 2 year)
+    where {{ filter_last_n_periods("l.listen_date", "year", 2) }}
 
 )
 

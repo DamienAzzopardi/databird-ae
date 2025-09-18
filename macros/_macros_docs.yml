@@ -1,0 +1,17 @@
+version: 2
+
+macros:
+  - name: filter_last_n_periods
+    description: This macro helps filter your data to only include rows from the last n days, weeks, months, or years.
+      Instead of writing different SQL expressions for each case (like `date_sub` in BigQuery), you can use this one macro and just pass in the period you want (`day`, `week`, `month`, `year`).
+    
+    arguments:
+      - name: column_name
+        type: string
+        description: The date or timestamp column you want to filter on.
+      - name: datepart
+        type: string
+        description: The period type (`day`, `week`, `month`, `year`).
+      - name: n
+        type: integer
+        description: How many periods to look back. Defaults to 1.

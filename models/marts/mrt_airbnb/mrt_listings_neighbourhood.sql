@@ -7,6 +7,7 @@
 with neighbourhood_prices as (
 
     select
+        host_id, -- hosts can have multiple listings
         neighbourhood_cleansed,
         room_type,
         count(id) as total_listings,
@@ -14,7 +15,7 @@ with neighbourhood_prices as (
 
     from {{ ref('stg_airbnb__listings') }}
 
-    group by neighbourhood_cleansed, room_type
+    group by host_id, neighbourhood_cleansed, room_type
 
 )
 

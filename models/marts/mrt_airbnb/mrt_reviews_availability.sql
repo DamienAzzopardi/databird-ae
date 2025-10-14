@@ -18,7 +18,7 @@ reviews as (
         sum(number_of_reviews) as total_reviews
     from listings
 
-    group by 1, 2
+    group by neighbourhood_cleansed, room_type
 )
 
 select * from reviews

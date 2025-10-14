@@ -7,7 +7,7 @@
 with neighbourhood_prices as (
 
     select
-        host_id,
+        host_id, -- hosts can have multiple listings
         neighbourhood_cleansed,
         room_type,
         count(id) as total_listings,

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: mrt_reviews_availability
+  - name: mrt_airbnb__reviews_availability
     description: "Mart agrégeant le nombre total de commentaires par quartier et type de logement."
     columns:
       - name: neighbourhood_cleansed

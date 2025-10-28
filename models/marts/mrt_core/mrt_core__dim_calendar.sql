@@ -16,7 +16,7 @@ year_date as (
 bank_holidays_fr as (
   select
     cast(date as date) as bank_holidays_fr_date,
-    nom_jour_ferie as bank_holidays_fr_description
+    nom_jour_ferie as bank_holidays_fr_desc
   from {{ ref('bank_holidays_france') }}
 ),
 
@@ -98,11 +98,11 @@ final as (
     -- Weekend/working day (ISO definition)
     (cast(format_date('%u', year_date.date_day) as int64) in (6, 7)) as is_weekend,
     (cast(format_date('%u', year_date.date_day) as int64) not in (6, 7)
-      and bank_holidays_fr.bank_holidays_fr_description is null) as is_working_day,
+      and bank_holidays_fr.bank_holidays_fr_desc is null) as is_working_day,
 
     -- Holidays FR
-    (bank_holidays_fr.bank_holidays_fr_description is not null) as is_holiday_fr,
-    bank_holidays_fr.bank_holidays_fr_description as holiday_fr_description
+    (bank_holidays_fr.bank_holidays_fr_desc is not null) as is_holiday_fr,
+    bank_holidays_fr.bank_holidays_fr_desc as holiday_fr_description
 
   from year_date
   left join bank_holidays_fr

@@ -1,5 +1,5 @@
 with
-cleaned_songs as (
+cleaned_song as (
 
     select
         song_id,
@@ -14,4 +14,4 @@ cleaned_songs as (
 )
 
 select *
-from cleaned_songs
+from cleaned_song

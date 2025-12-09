@@ -1,5 +1,12 @@
 with
-cleaned_songs as (
+
+source as (
+
+    select * from {{ source('spotify', 'songs') }}
+
+),
+
+renamed as (
 
     select
         song_id,
@@ -8,10 +15,8 @@ cleaned_songs as (
         upper(title) as title,
         upper(artist) as artist,
         coalesce(genre, 'Unknown') as genre
-
-    from {{ source("spotify", "songs") }}
+    from source
 
 )
 
-select *
-from cleaned_songs
+select * from renamed

@@ -1,0 +1,22 @@
+version: 2
+
+seeds:
+  - name: bank_holidays_france
+    description: French public holidays (jours fériés) for the Métropole zone, from 2005 to 2030. One row per holiday date.
+    columns:
+      - name: date
+        description: Date of the public holiday
+        tests:
+          - not_null
+      - name: annee
+        description: Calendar year of the public holiday
+        tests:
+          - not_null
+      - name: zone
+        description: Geographic zone where the holiday applies (e.g. Métropole)
+        tests:
+          - not_null
+      - name: nom_jour_ferie
+        description: Name of the public holiday
+        tests:
+          - not_null

@@ -16,7 +16,7 @@ year_date as (
 bank_holidays_fr as (
   select
     cast(date as date) as bank_holidays_fr_date,
-    nom_jour_ferie as bank_holidays_fr_desc
+    name_bank_holiday as bank_holidays_fr_desc
   from {{ ref('bank_holidays_france') }}
 ),
 

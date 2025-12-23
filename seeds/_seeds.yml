@@ -16,7 +16,7 @@ seeds:
         description: Geographic zone where the holiday applies (e.g. Métropole)
         tests:
           - not_null
-      - name: nom_jour_ferie
+      - name: name_bank_holiday
         description: Name of the public holiday
         tests:
           - not_null

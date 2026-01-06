@@ -9,6 +9,11 @@ config-version: 2
 # This setting configures which "profile" dbt uses for this project.
 profile: 'default'
 
+# Define version-controlled defaults for everyone running this project. 
+# Also, opt in or opt out of behavior changes to manage your migration off legacy functionality.
+flags:
+  bigquery_use_batch_source_freshness: true
+
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!

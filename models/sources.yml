@@ -21,11 +21,6 @@ sources:
     schema: google_analytics_4
     tables:
         - name: events_2021_01_01_05
-  
-  - name: airbnb
-    schema: airbnb
-    tables:
-      - name: listings
 
   - name: spotify
     schema: spotify

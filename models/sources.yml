@@ -27,8 +27,4 @@ sources:
     tables:
       - name: songs
       - name: listening_data
-        config:
-          freshness:
-            warn_after: {count: 30, period: day}
-            loaded_at_field: CAST(listen_date AS TIMESTAMP)
  
